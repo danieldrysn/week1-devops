@@ -26,6 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest pytest-cov
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      - name: Run tests
+        run: |
+          python -m pytest -v tests
 
       - name: Build coverage file
         run: |
@@ -53,7 +57,3 @@ jobs:
           echo "Coverage Tests - ${{ steps.coverageComment.outputs.tests }}"
           echo "Coverage Time - ${{ steps.coverageComment.outputs.time }}"
           echo "Not Success Test Info - ${{ steps.coverageComment.outputs.notSuccessTestInfo }}"
-      
-      - name: Run tests
-        run: |
-          python -m pytest -v tests
