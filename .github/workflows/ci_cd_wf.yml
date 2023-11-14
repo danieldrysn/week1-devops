@@ -27,7 +27,7 @@ jobs:
       
       - name: Run tests
         run: |
-          python -m pytest -v tests --cov=tests 
+          python -m pytest -v tests --cov=tests --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt 
 
       - name: Build coverage file
         run: |
